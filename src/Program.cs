@@ -1,7 +1,15 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+string firstName;
+string lastName;
 
-Person personTest = new Person("Test", "Retest");
+Console.WriteLine("Saisissez le prénom: ");
+firstName = Console.ReadLine();
+Console.WriteLine("Saisissez le nom: ");
+lastName = Console.ReadLine();
+
+Console.WriteLine(firstName + " " + lastName);
+
+Person personTest = new("Test", "Retest");
 
 Console.WriteLine(personTest.lastName + " " + personTest.firstName);
 
