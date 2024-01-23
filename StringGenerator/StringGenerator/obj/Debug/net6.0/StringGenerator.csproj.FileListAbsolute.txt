@@ -1,0 +1,15 @@
+C:\Users\TGrandgirard\Documents\git\tp-git-a-deux\StringGenerator\StringGenerator\bin\Debug\net6.0\StringGenerator.exe
+C:\Users\TGrandgirard\Documents\git\tp-git-a-deux\StringGenerator\StringGenerator\bin\Debug\net6.0\StringGenerator.deps.json
+C:\Users\TGrandgirard\Documents\git\tp-git-a-deux\StringGenerator\StringGenerator\bin\Debug\net6.0\StringGenerator.runtimeconfig.json
+C:\Users\TGrandgirard\Documents\git\tp-git-a-deux\StringGenerator\StringGenerator\bin\Debug\net6.0\StringGenerator.dll
+C:\Users\TGrandgirard\Documents\git\tp-git-a-deux\StringGenerator\StringGenerator\bin\Debug\net6.0\StringGenerator.pdb
+C:\Users\TGrandgirard\Documents\git\tp-git-a-deux\StringGenerator\StringGenerator\obj\Debug\net6.0\StringGenerator.csproj.AssemblyReference.cache
+C:\Users\TGrandgirard\Documents\git\tp-git-a-deux\StringGenerator\StringGenerator\obj\Debug\net6.0\StringGenerator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\TGrandgirard\Documents\git\tp-git-a-deux\StringGenerator\StringGenerator\obj\Debug\net6.0\StringGenerator.AssemblyInfoInputs.cache
+C:\Users\TGrandgirard\Documents\git\tp-git-a-deux\StringGenerator\StringGenerator\obj\Debug\net6.0\StringGenerator.AssemblyInfo.cs
+C:\Users\TGrandgirard\Documents\git\tp-git-a-deux\StringGenerator\StringGenerator\obj\Debug\net6.0\StringGenerator.csproj.CoreCompileInputs.cache
+C:\Users\TGrandgirard\Documents\git\tp-git-a-deux\StringGenerator\StringGenerator\obj\Debug\net6.0\StringGenerator.dll
+C:\Users\TGrandgirard\Documents\git\tp-git-a-deux\StringGenerator\StringGenerator\obj\Debug\net6.0\refint\StringGenerator.dll
+C:\Users\TGrandgirard\Documents\git\tp-git-a-deux\StringGenerator\StringGenerator\obj\Debug\net6.0\StringGenerator.pdb
+C:\Users\TGrandgirard\Documents\git\tp-git-a-deux\StringGenerator\StringGenerator\obj\Debug\net6.0\StringGenerator.genruntimeconfig.cache
+C:\Users\TGrandgirard\Documents\git\tp-git-a-deux\StringGenerator\StringGenerator\obj\Debug\net6.0\ref\StringGenerator.dll
