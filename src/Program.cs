@@ -9,9 +9,9 @@ lastName = Console.ReadLine();
 
 Console.WriteLine(firstName + " " + lastName);
 
-Person personTest = new("Test", "Retest");
+Person myPerson = new(lastName, firstName);
 
-Console.WriteLine(personTest.lastName + " " + personTest.firstName);
+Console.WriteLine(myPerson.lastName + " " + myPerson.firstName);
 
 public class Person{
     public string lastName;
