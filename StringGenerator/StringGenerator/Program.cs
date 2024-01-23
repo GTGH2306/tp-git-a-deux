@@ -13,7 +13,7 @@
         static string ScreamGenerator()
         {
             Random rnd = new();
-            int rdm = rnd.Next(6, 18);
+            int rdm = rnd.Next(6, 30);
             string retour = "";
 
             for (int i = 0; i < rdm; i++)
