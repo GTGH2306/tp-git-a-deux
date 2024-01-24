@@ -1,4 +1,7 @@
-﻿using System.Text.Json;
+﻿using System.Net.Http.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 string save = "";
 
@@ -87,16 +90,9 @@ static bool DoublonController(List<Person> _liste, string _firstName, string _la
 
 static void JsonSerialize(List<Person> _liste)
 {
-    string jsonTemp;
-    string jsonString = "";
+    string jsonString = JsonConvert.SerializeObject(_liste);
     string fileName = "save.json";
 
-    foreach(Person person in _liste)
-    {
-        jsonTemp = JsonSerializer.Serialize(person.firstName + " " + person.lastName + " ");
-        jsonString += jsonTemp;
-    }
-        
     File.WriteAllText(fileName, jsonString);
     Console.WriteLine(File.ReadAllText("save.json"));
 }
