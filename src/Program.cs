@@ -47,7 +47,9 @@ static bool DoublonController(List<Person> _liste, string _firstName, string _la
 {
     bool doublon = false;
     foreach(Person e in _liste){
-        if(e.firstName.Equals(_firstName) && e.lastName.Equals(_lastName)){
+        Console.WriteLine(e.firstName + " " + e.lastName);
+        Console.WriteLine(_firstName + " " + _lastName);
+        if (e.firstName.Equals(_firstName) && e.lastName.Equals(_lastName)){
             Console.WriteLine("Doublon détecté");
             doublon = true;
         }
@@ -59,7 +61,7 @@ public class Person //Objet personne ayant un prénom et un nom
 {
     public string lastName;
     public string firstName;
-    public Person(string _lastName, string _firstName)
+    public Person(string _firstName, string _lastName)
     {
         this.lastName = _lastName;
         this.firstName = _firstName;
