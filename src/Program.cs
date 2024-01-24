@@ -5,17 +5,32 @@ using Newtonsoft.Json;
 
 string save = "";
 
-PeopleContainer boite = new(SaisieListeConsole());
+PeopleContainer boite = new PeopleContainer(SaisieListeConsole());
+
+if (boite.people.Count() > 0)
+{
+    Console.WriteLine("Souhaitez-vous trier par noms ou prenoms?\t(p pour prenoms)\t(n pour noms)");
+    if (Console.ReadLine() == "p")
+    {
+        boite.people.Sort(new TriParPrenom());
+    }
+    else
+    {
+        boite.people.Sort(new TriParNom());
+    }
+}
 
 Console.WriteLine("Sauvegarder la liste de personnes ? \t (o pour oui)");
 save = Console.ReadLine();
 
-if(save == "o")
+if (save == "o")
 {
     JsonSerialize(boite.people);
 }
 
-foreach (Person e in boite.SortByFirstName())
+
+
+foreach (Person e in boite.people)
 {
     Console.WriteLine(e.firstName + " " + e.lastName);
 }
@@ -106,9 +121,31 @@ public class Person //Objet personne ayant un prénom et un nom
         this.lastName = _lastName;
         this.firstName = _firstName;
     }
+
+ 
+
+    //public int CompareTo(object? obj)
+    //{
+    //    obj = (Person)obj;
+    //    return firstName.CompareTo(obj.firstName);
+    //}
+}
+public class TriParNom : IComparer<Person>
+{
+    public int Compare(Person x, Person y)
+    {
+        return x.lastName.CompareTo(y.lastName);
+    }
+}
+public class TriParPrenom : IComparer<Person>
+{
+    public int Compare(Person? x, Person? y)
+    {
+        return x.firstName.CompareTo(y.firstName);
+    }
 }
 
-public class PeopleContainer: IPersonContainer  //Conteneur d'une liste personne qui permet aussi de les trier
+public class PeopleContainer  //Conteneur d'une liste personne qui permet aussi de les trier
 {
     public List<Person> people;
     public PeopleContainer(){
@@ -117,17 +154,22 @@ public class PeopleContainer: IPersonContainer  //Conteneur d'une liste personne
     public PeopleContainer(List<Person> _people)
     {
         this.people = _people;
+        this.people.Sort(new TriParNom());
     }
 
-    public List<Person> SortByLastName(){
+    //public List<Person> SortByLastName()
+    //{
 
-        
-       return this.people.OrderBy(retour => retour.lastName).ToList();
-    }
 
-    public List<Person> SortByFirstName(){
-        return this.people.OrderBy(retour => retour.firstName).ToList();
-    }
+    //   return this.people.OrderBy(retour => retour.lastName).ToList();
+    //}
+
+    //public List<Person> SortByFirstName()
+    //{
+     
+      
+    //   return this.people.OrderBy(retour => retour.firstName).ToList();
+    //}
 
 }
 
