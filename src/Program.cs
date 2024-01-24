@@ -1,16 +1,28 @@
-﻿Person myPerson = SaisieConsole();
+﻿
+PeopleContainer boite = new(SaisieListeConsole());
 
-Console.WriteLine(myPerson.lastName + " " + myPerson.firstName);
-
-PeopleContainer boite = new();
-
-boite.people.Add(myPerson);
-boite.people.Add(new Person("Lincoln", "Abraham"));
-boite.people.Add(new Person("Prime", "Optimus"));
-boite.people.Add(new Person("Zord", "Mega"));
+foreach (Person e in boite.SortByFirstName())
+{
+    Console.WriteLine(e.firstName);
+}
 
 
-static Person SaisieConsole()
+static List<Person> SaisieListeConsole() //Retourne une liste de personne saisie par utilisateur en console
+{
+    List<Person> retour = new List<Person>();
+    string saisie;
+
+    do
+    {
+        retour.Add(SaisieConsole());
+        Console.WriteLine("Continuer?\t(n pour Non)");
+        saisie = Console.ReadLine().ToLower();
+    } while (saisie == "n");
+
+    return retour;
+}
+
+static Person SaisieConsole() //Retourne une personne saisie par utilisateur en console
 {
     string firstName;
     string lastName;
@@ -23,7 +35,7 @@ static Person SaisieConsole()
     return new Person(lastName, firstName);
 }
 
-public class Person
+public class Person //Objet personne ayant un prénom et un nom
 {
     public string lastName;
     public string firstName;
@@ -34,13 +46,16 @@ public class Person
     }
 }
 
-public class PeopleContainer : IPersonContainer 
+public class PeopleContainer : IPersonContainer  //Conteneur d'une liste personne qui permet aussi de les trier
 {
     public List<Person> people;
     public PeopleContainer(){
-        this.people = new List<Person>;
+        this.people = new List<Person>();
     }
-
+    public PeopleContainer(List<Person> _people)
+    {
+        this.people = _people;
+    }
 
     public List<Person> SortByLastName(){
         return this.people.OrderBy(retour => retour.lastName).ToList();
@@ -52,7 +67,7 @@ public class PeopleContainer : IPersonContainer
 
 }
 
-interface IPersonContainer
+interface IPersonContainer //Interface pour le PeopleContainer
 {
     List<Person> SortByLastName();
     List<Person> SortByFirstName();
