@@ -1,4 +1,16 @@
-﻿PeopleContainer boite = new(SaisieListeConsole());
+﻿using System.Text.Json;
+
+string save = "";
+
+PeopleContainer boite = new(SaisieListeConsole());
+
+Console.WriteLine("Sauvegarder la liste de personnes ? \t (o pour oui)");
+save = Console.ReadLine();
+
+if(save == "o")
+{
+    JsonSerialize(boite.people);
+}
 
 foreach (Person e in boite.SortByFirstName())
 {
@@ -24,6 +36,7 @@ static List<Person> SaisieListeConsole() //Retourne une liste de personne saisie
             saisie = Console.ReadLine().ToLower();
         }
     } while (saisie != "n");
+
 
     return retour;
 }
@@ -72,6 +85,22 @@ static bool DoublonController(List<Person> _liste, string _firstName, string _la
     return doublon;
 }
 
+static void JsonSerialize(List<Person> _liste)
+{
+    string jsonTemp;
+    string jsonString = "";
+    string fileName = "save.json";
+
+    foreach(Person person in _liste)
+    {
+        jsonTemp = JsonSerializer.Serialize(person.firstName + " " + person.lastName + " ");
+        jsonString += jsonTemp;
+    }
+        
+    File.WriteAllText(fileName, jsonString);
+    Console.WriteLine(File.ReadAllText("save.json"));
+}
+
 public class Person //Objet personne ayant un prénom et un nom
 {
     public string lastName;
@@ -111,3 +140,5 @@ interface IPersonContainer //Interface pour le PeopleContainer
     List<Person> SortByLastName();
     List<Person> SortByFirstName();
 }
+
+
