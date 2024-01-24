@@ -10,12 +10,19 @@ static List<Person> SaisieListeConsole() //Retourne une liste de personne saisie
 {
     List<Person> retour = new List<Person>();
     string saisie;
+    int minPeople;
+
+    minPeople = 3;
+    saisie = "OUI, SELON TRISTAN";
 
     do
     {
         retour.Add(SaisieConsole(retour));
-        Console.WriteLine("Continuer?\t(n pour Non)");
-        saisie = Console.ReadLine().ToLower();
+        if (retour.Count() >= minPeople)
+        {
+            Console.WriteLine("Continuer?\t(n pour Non)");
+            saisie = Console.ReadLine().ToLower();
+        }
     } while (saisie != "n");
 
     return retour;
@@ -26,6 +33,7 @@ static Person SaisieConsole(List<Person> _retour) //Retourne une personne saisie
     string firstName;
     string lastName;
     Person retour;
+    
 
     Console.WriteLine("Saisissez le prénom: ");
     firstName = Console.ReadLine();
@@ -33,6 +41,7 @@ static Person SaisieConsole(List<Person> _retour) //Retourne une personne saisie
     lastName = Console.ReadLine();
     if(DoublonController(_retour, firstName, lastName))
     {
+        Console.WriteLine("Doublon détecté.");
         retour = SaisieConsole(_retour);
     }
     else
@@ -46,6 +55,7 @@ static Person SaisieConsole(List<Person> _retour) //Retourne une personne saisie
 static bool DoublonController(List<Person> _liste, string _firstName, string _lastName)
 {
     bool doublon = false;
+    /*
     foreach(Person e in _liste){
         Console.WriteLine(e.firstName + " " + e.lastName);
         Console.WriteLine(_firstName + " " + _lastName);
@@ -53,6 +63,11 @@ static bool DoublonController(List<Person> _liste, string _firstName, string _la
             Console.WriteLine("Doublon détecté");
             doublon = true;
         }
+    }
+    */
+    if (_liste.FindAll(Person => Person.firstName.Equals(_firstName) && Person.lastName.Equals(_lastName)).Count() > 0)
+    {
+        doublon = true;
     }
     return doublon;
 }
@@ -68,7 +83,7 @@ public class Person //Objet personne ayant un prénom et un nom
     }
 }
 
-public class PeopleContainer : IPersonContainer  //Conteneur d'une liste personne qui permet aussi de les trier
+public class PeopleContainer: IPersonContainer  //Conteneur d'une liste personne qui permet aussi de les trier
 {
     public List<Person> people;
     public PeopleContainer(){
@@ -80,7 +95,9 @@ public class PeopleContainer : IPersonContainer  //Conteneur d'une liste personn
     }
 
     public List<Person> SortByLastName(){
-        return this.people.OrderBy(retour => retour.lastName).ToList();
+
+        
+       return this.people.OrderBy(retour => retour.lastName).ToList();
     }
 
     public List<Person> SortByFirstName(){
