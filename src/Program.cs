@@ -8,6 +8,19 @@ string save = "";
 
 PeopleContainer boite = new PeopleContainer(SaisieListeConsole());
 
+if (boite.people.Count() > 0)
+{
+    Console.WriteLine("Souhaitez-vous trier par noms ou prenoms?\t(p pour prenoms)\t(n pour noms)");
+    if (Console.ReadLine() == "p")
+    {
+        boite.people.Sort(new TriParPrenom());
+    }
+    else
+    {
+        boite.people.Sort(new TriParNom());
+    }
+}
+
 Console.WriteLine("Sauvegarder la liste de personnes ? \t (o pour oui)");
 save = Console.ReadLine();
 
@@ -15,17 +28,7 @@ if (save == "o")
 {
     JsonSerialize(boite.people);
 }
-if (boite.people.Count() > 0)
-{
-    Console.WriteLine("Souhaitez-vous trier par noms ou prenoms?\t(p pour prenoms)\t(n pour noms)");
-    if (Console.ReadLine() == "p")
-    {
-        boite.people.Sort(new TriParPrenom());
-    } else
-    {
-        boite.people.Sort(new TriParNom());
-    }
-}
+
 
 
 foreach (Person e in boite.people)
